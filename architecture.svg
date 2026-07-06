@@ -1,0 +1,81 @@
+<svg viewBox="0 0 940 600" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#10b981"/>
+    </marker>
+    <marker id="arrowRed" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#ef4444"/>
+    </marker>
+    <marker id="arrowGrey" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+
+  <!-- background -->
+  <rect x="0" y="0" width="940" height="600" rx="14" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+
+  <!-- title -->
+  <text x="470" y="42" text-anchor="middle" font-size="22" font-weight="700" fill="#1e293b">IAM Least-Privilege: One Bucket, MFA-Enforced</text>
+  <text x="470" y="68" text-anchor="middle" font-size="13" fill="#64748b">Identity: s3-readonly-tester   |   Region: us-east-1</text>
+
+  <!-- identity node -->
+  <rect x="340" y="92" width="260" height="86" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="1.5"/>
+  <text x="470" y="116" text-anchor="middle" font-size="11" font-weight="700" fill="#6366f1" letter-spacing="0.5">IAM USER</text>
+  <text x="470" y="140" text-anchor="middle" font-size="16" font-weight="700" fill="#1e293b">s3-readonly-tester</text>
+  <text x="470" y="162" text-anchor="middle" font-size="12" fill="#475569">MFA device assigned (TOTP)</text>
+
+  <!-- user to policies connectors -->
+  <line x1="420" y1="178" x2="363" y2="210" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrowGrey)"/>
+  <line x1="520" y1="178" x2="577" y2="210" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrowGrey)"/>
+
+  <!-- allow policy chip -->
+  <rect x="288" y="212" width="150" height="70" rx="9" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
+  <text x="363" y="233" text-anchor="middle" font-size="12" font-weight="700" fill="#059669">ALLOW POLICY</text>
+  <text x="363" y="253" text-anchor="middle" font-size="11" fill="#065f46">s3:ListBucket</text>
+  <text x="363" y="270" text-anchor="middle" font-size="11" fill="#065f46">s3:GetObject (this bucket)</text>
+
+  <!-- deny policy chip -->
+  <rect x="502" y="212" width="150" height="70" rx="9" fill="#fef2f2" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="577" y="233" text-anchor="middle" font-size="12" font-weight="700" fill="#dc2626">DENY POLICY</text>
+  <text x="577" y="253" text-anchor="middle" font-size="11" fill="#7f1d1d">s3:* when no MFA</text>
+  <text x="577" y="270" text-anchor="middle" font-size="11" fill="#7f1d1d">(BoolIfExists)</text>
+
+  <!-- lane connectors (dashed) -->
+  <path d="M320,247 C220,247 235,300 235,316" fill="none" stroke="#10b981" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <path d="M620,247 C720,247 705,300 705,316" fill="none" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="5 4"/>
+
+  <!-- LEFT LANE: console + MFA -->
+  <text x="235" y="320" text-anchor="middle" font-size="13" font-weight="700" fill="#059669">Console session (MFA present)</text>
+  <rect x="150" y="336" width="170" height="56" rx="9" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="235" y="360" text-anchor="middle" font-size="13" font-weight="700" fill="#1e293b">AWS Console</text>
+  <text x="235" y="379" text-anchor="middle" font-size="11" fill="#64748b">signed in with MFA</text>
+  <line x1="235" y1="392" x2="235" y2="428" stroke="#10b981" stroke-width="2" marker-end="url(#arrowGreen)"/>
+  <text x="330" y="414" text-anchor="start" font-size="10" fill="#059669">Allow governs</text>
+
+  <rect x="150" y="430" width="170" height="70" rx="9" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
+  <circle cx="180" cy="454" r="10" fill="#10b981"/>
+  <path d="M175,454 l4,4 l7,-8" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="198" y="459" text-anchor="start" font-size="13" font-weight="700" fill="#059669">READ SUCCEEDS</text>
+  <text x="235" y="479" text-anchor="middle" font-size="10.5" fill="#065f46">lists and opens objects in</text>
+  <text x="235" y="493" text-anchor="middle" font-size="10.5" fill="#065f46">bbook-...-test-01</text>
+
+  <!-- RIGHT LANE: CLI no MFA -->
+  <text x="705" y="320" text-anchor="middle" font-size="13" font-weight="700" fill="#dc2626">CLI session (keys, no MFA)</text>
+  <rect x="620" y="336" width="170" height="56" rx="9" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="705" y="360" text-anchor="middle" font-size="13" font-weight="700" fill="#1e293b">AWS CLI</text>
+  <text x="705" y="379" text-anchor="middle" font-size="11" fill="#64748b">long-term access keys</text>
+  <line x1="705" y1="392" x2="705" y2="428" stroke="#ef4444" stroke-width="2" marker-end="url(#arrowRed)"/>
+  <text x="610" y="414" text-anchor="end" font-size="10" fill="#dc2626">Deny fires first</text>
+
+  <rect x="620" y="430" width="170" height="70" rx="9" fill="#fef2f2" stroke="#ef4444" stroke-width="1.5"/>
+  <circle cx="650" cy="454" r="10" fill="#ef4444"/>
+  <path d="M646,450 l8,8 M654,450 l-8,8" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+  <text x="668" y="459" text-anchor="start" font-size="13" font-weight="700" fill="#dc2626">EXPLICIT DENY</text>
+  <text x="705" y="479" text-anchor="middle" font-size="10.5" fill="#7f1d1d">s3:* blocked, no MFA</text>
+  <text x="705" y="493" text-anchor="middle" font-size="10.5" fill="#7f1d1d">present in session</text>
+
+  <!-- bottom band -->
+  <rect x="150" y="524" width="640" height="52" rx="9" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="470" y="548" text-anchor="middle" font-size="12.5" font-weight="700" fill="#92400e">Default deny everywhere else</text>
+  <text x="470" y="566" text-anchor="middle" font-size="11" fill="#92400e">EC2, billing, and every other bucket are blocked, because no policy grants them.</text>
+</svg>
