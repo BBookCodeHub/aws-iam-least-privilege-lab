@@ -3,7 +3,11 @@
 Scoped an IAM user to read exactly one S3 bucket and nothing else, enforced MFA at sign-in, and blocked every programmatic action that lacks MFA. Verified each boundary by testing from the restricted user's own perspective.
 
 **Stack:** AWS IAM, Amazon S3, AWS CLI, virtual MFA (TOTP)
+
 **Region:** us-east-1
+
+**Completed:** *July 5, 2026*
+
 
 ## Summary
 
