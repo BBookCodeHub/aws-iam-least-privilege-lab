@@ -88,11 +88,19 @@ Issued one long-term access key to exercise the no-MFA path from the CLI. Remove
 | Reach other services (EC2, billing, other buckets) | Console (MFA) | Denied | Access denied |
 | List the bucket over the CLI | CLI (keys, no MFA) | Denied | Explicit deny |
 
-Evidence:
-- `screenshots/console-read-success.png` lists and opens the file under the MFA session
-- `screenshots/console-access-denied.png` & `screenshots/console-access-denied-2.png` shows access denied on services outside the bucket
-- `screenshots/mfa-assigned.png` shows the MFA device attached to the user
-- `screenshots/cli-explicit-deny.png` shows the CLI `s3 ls` returning an explicit-deny error
+### Evidence
+
+**Console (MFA session): read succeeds**
+![Console read success](screenshots/console-read-success.png)
+
+**Console: access denied on services outside the bucket**
+![Access denied on other services](screenshots/console-access-denied.png)
+
+**MFA device assigned to the user**
+![MFA device assigned](screenshots/mfa-assigned.png)
+
+**CLI (no MFA): explicit deny**
+![CLI explicit deny](screenshots/cli-explicit-deny.png)
 
 The CLI error included the phrase "explicit deny in an identity-based policy," which confirms the deny policy fired rather than a plain absence of permission. Account ID is redacted in the capture.
 
