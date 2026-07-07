@@ -8,6 +8,13 @@ Scoped an IAM user to read exactly one S3 bucket and nothing else, enforced MFA 
 
 **Completed:** *July 5, 2026*
 
+![AWS](https://img.shields.io/badge/AWS-Cloud-orange?logo=amazonaws)
+![AWS IAM](https://img.shields.io/badge/AWS-IAM-orange?logo=amazonaws)
+![Least Privilege](https://img.shields.io/badge/Security-Least%20Privilege-red)
+![IAM Policies](https://img.shields.io/badge/IAM-Policies-blue)
+![IAM Roles](https://img.shields.io/badge/IAM-Roles-success)
+![JSON](https://img.shields.io/badge/JSON-Policy-lightgrey?logo=json)
+![AWS CLI](https://img.shields.io/badge/AWS-CLI-yellow?logo=amazonaws)
 
 ## Summary
 
